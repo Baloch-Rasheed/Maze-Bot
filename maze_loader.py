@@ -9,7 +9,7 @@ def load_maze(file_path):
         raise FileNotFoundError(f"The maze file was not found at: {file_path}")
 
     start, end = None, None
-    # Iterate through the maze to find the start ('A') and end ('B') points
+    # Iterate through the maze to find start and end points
     for x, row in enumerate(maze):
         for y, col in enumerate(row):
             if col == 'A':
@@ -17,7 +17,6 @@ def load_maze(file_path):
             elif col == 'B':
                 end = (x, y)
 
-    # If both start and end points are found, return the maze data
     if start and end:
         return maze, start, end
     else:
