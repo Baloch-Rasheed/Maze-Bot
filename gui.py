@@ -34,8 +34,38 @@ class MazeGUI:
         # Initialize Pygame and set up the display
         pygame.init()
         self.screen = pygame.display.set_mode((self.screen_width, self.screen_height))
-        pygame.display.set_caption("BFS Maze Solver")
-
+        pygame.display.set_caption("Maze Solver")
+    
+    def visualize_algorithm(self, algorithm, maze, start, end):
+        """
+        Visualizes any algorithm's visited cells and, at the end, the chosen path.
+        """
+        self.draw_maze()
+        path = None
+        for result in algorithm(maze, start, end):
+            # If result is a set, it's visited cells
+            if isinstance(result, set):
+                for r, c in result:
+                    if (r, c) != start and (r, c) != end:
+                        pygame.draw.rect(
+                            self.screen, (180, 180, 180),
+                            (c * self.cell_size, r * self.cell_size, self.cell_size, self.cell_size)
+                        )
+                pygame.display.flip()
+                pygame.time.delay(80)
+            # If result is a list, it's the final path
+            elif isinstance(result, list):
+                path = result
+        # Draw the final path if found
+        if path:
+            for r, c in path:
+                if (r, c) != start and (r, c) != end:
+                    pygame.draw.rect(
+                        self.screen, (50, 200, 50),
+                        (c * self.cell_size, r * self.cell_size, self.cell_size, self.cell_size))
+            pygame.time.delay(80)
+            pygame.display.flip()
+    
     def draw_maze(self):
         """
         Draws the initial state of the maze.
