@@ -1,11 +1,11 @@
 # Maze Bot | Maze Solver
 
-This project is a Python application for visualizing and solving mazes using three different search algorithms: **Breadth-First Search (BFS)**, **Depth-First Search (DFS)**, and **Greedy Best-First Search (GBFS)**. The maze is loaded from a text file and displayed using a graphical interface built with Pygame.
+This project is a Python application for visualizing and solving mazes using three different search algorithms: **Breadth-First Search (BFS)**, **Depth-First Search (DFS)**,  **Greedy Best-First Search (GBFS)**, and **A* Search (A-star)**. The maze is loaded from a text file and displayed using a graphical interface built with Pygame.
 
 ## Features
 
 - **Maze Loading:** Load mazes from text files using `#` for walls, spaces for paths, `A` for the start point, and `B` for the end point.
-- **Multiple Algorithms:** Solve the maze using BFS, DFS, or GBFS.
+- **Multiple Algorithms:** Solve the maze using BFS, DFS, GBFS, or A*.
 - **Visualization:** See the maze and the solution path animated in a Pygame window.
 - **Error Handling:** Handles missing files and invalid maze formats gracefully.
 
@@ -36,12 +36,12 @@ A maze should be a plain text file, for example:
     - `path = dfs(maze, start, end)`
     - `path = gbfs(maze, start, end)`
 3. **Visualize Solution:** The solution path is displayed step-by-step in the GUI.
-
+    - `gui.visualize_algorithm(dfs, maze, start, end)`
 ## Files
 
 - `main.py` — Entry point; loads the maze, runs the algorithm, and starts the GUI.
 - `maze_loader.py` — Loads the maze from a text file and finds the start/end points.
-- `algorithm.py` — Contains BFS, DFS, and GBFS implementations.
+- `algorithm.py` — Contains BFS, DFS, GBFS, and A-star algorithm implementations.
 - `gui.py` — Handles maze visualization and solution animation using Pygame.
 
 ## Requirements
